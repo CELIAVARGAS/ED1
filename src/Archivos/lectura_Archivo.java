@@ -6,6 +6,7 @@
 package Archivos;
 
 import static Archivos.creacionArbol.crearArchivoDotArbol;
+import static Archivos.creacionArchivoDot.crearArchivoDotIMagen;
 import static Archivos.creacionImagen.dibujar;
 import static Archivos.escrituraArchivoGrafica.escrituraArchivo;
 import static Archivos.recorrido.creacionArbol;
@@ -15,7 +16,6 @@ import Grafo.arista;
 import Grafo.grafo;
 import Grafo.listaCiudad;
 import Grafo.nodoG;
-import arbol.creacionArbol;
 import interfaz.Pantalla;
 import static interfaz.Pantalla.opcion;
 import java.io.File;
@@ -23,11 +23,13 @@ import java.io.FileNotFoundException;
 import java.util.LinkedList;
 import java.util.Scanner;
 import javax.swing.JFileChooser;
-import static Archivos.creacionArchivoDot.crearArchivoDotIMagen;
 import arbol.arbolB;
 import static arbol.arbolB.imprimir;
+import static interfaz.Pantalla.areaErroresPantalla;
+import static interfaz.Pantalla.botonI;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -75,15 +77,25 @@ public class lectura_Archivo {
             //despues de analizar cada linea agregamos las aristas a los nodos
             agregacionAristasANodos();
             creacionGrafo();
-            recorridoGrafo("XELA", "PETEN");
+            crearArchivoDotIMagen(13);
+            dibujar("EstructuraGrafo.dot", "imagen.jpg");
+            ImageIcon iconoOriginal = new ImageIcon("imagen.jpg");
+            int ancho = botonI.getWidth();
+            int alto = botonI.getHeight();
+            ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(ancho, alto, java.awt.Image.SCALE_DEFAULT));
+            botonI.setIcon(iconoEscala);
+
+            /*        recorridoGrafo("XELA", "PETEN");
             System.out.println("Lista de rutas");
             for (int i = 0; i < listaRecorridos.size(); i++) {
                 System.out.println(listaRecorridos.get(i).toString());
             }
+             */
         } else {
+           areaErroresPantalla.append("\nNo se ha seleccionado ningún fichero");
             System.out.println("No se ha seleccionado ningún fichero");
         }
-        opcion = 5;
+        /*        opcion = 5;
         creacionArbol(1);
         crearArchivoDotIMagen(5);
         crearArchivoDotArbol();
@@ -99,9 +111,10 @@ public class lectura_Archivo {
         BufferedWriter bw = new BufferedWriter(fw);
         bw.write("}");
         bw.close();
-*/
+         
         dibujar("EstructuraGrafo.dot", "imagen.png");
         dibujar("EstructuraArbol.dot", "imagen2.png");
+         */
     }
 
     public static String obtenerNombreCiudad(String ciudad) {

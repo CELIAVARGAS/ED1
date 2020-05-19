@@ -10,6 +10,7 @@ import Grafo.listaAristas;
 import Grafo.nodoG;
 import arbol.arbolB;
 import static arbol.arbolB.listaArbol;
+import static interfaz.Pantalla.areaListas;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -133,7 +134,7 @@ public class recorrido {
 
     public static LinkedList<String> obtenerCantidadUtilizadaRecorrido(LinkedList lista, int opcion) throws Exception {
         double cantidad = 0;
-
+        String ultimaCiudad = "";
         for (int i = 0; i < lista.size(); i++) {
             //cada dato de la lista es una ciudad, obtenemos la distancia dependiendp del parametro
             //opcion y se ira sumando la cantidad, luego se a;ade a la lista y se regresa la lista 
@@ -141,12 +142,18 @@ public class recorrido {
             String ciudad1 = (String) lista.get(i).toString();
             System.out.println(ciudad1);
             if (i == lista.size() - 1) {//ya no hay otra ciudad despues
+                ultimaCiudad = (String) lista.get(i).toString();;
             } else {
                 String ciudad2 = (String) lista.get(i + 1).toString();
                 cantidad = cantidad + cantidad(ciudad1, ciudad2, opcion);
             }
         }
-        lista.add(cantidad);
+        if (lista.getLast().equals(ultimaCiudad)) {
+            lista.add(cantidad);
+        } else {
+            lista.removeLast();
+            lista.add(cantidad);
+        }
         return lista;
     }
 
@@ -210,6 +217,9 @@ public class recorrido {
                                     c2 = grafoCompleto.getNodes().get(i).getAristas().getValor(j).getDistancia();
                                     cantidad = c1 + c2;
                                     break;
+                                case 13:
+                                    cantidad = grafoCompleto.getNodes().get(i).getAristas().getValor(j).getDistancia();
+                                    break;
                                 default:
                                     break;
                             }
@@ -234,7 +244,7 @@ public class recorrido {
             System.out.println(numero);
             datos[i] = numero;
         }
-        if (opcion == 1 | opcion == 2 | opcion == 3 | opcion == 4 | opcion == 5) {
+        if (opcion == 1 | opcion == 2 | opcion == 3 | opcion == 4 | opcion == 5 | opcion == 6) {
             for (int x = 0; x < datos.length; x++) {
                 for (int i = 0; i < datos.length - x - 1; i++) {
                     if (datos[i] > datos[i + 1]) {
@@ -267,6 +277,11 @@ public class recorrido {
                 }
             }
         }
+        areaListas.setText("");
+        System.out.println("Lista RO");
+        for (int i = 0; i < listaRO.size(); i++) {
+            areaListas.append("\n"+listaRO.get(i));
+        }
         System.out.println(listaRO.toString());
         llenarArbol();
     }
@@ -280,5 +295,4 @@ public class recorrido {
         arbol.imprimir(arbolB.raizArbol);
         System.out.println(listaArbol.toString());
     }
-
 }

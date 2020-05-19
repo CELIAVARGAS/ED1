@@ -14,7 +14,7 @@ public class creacionImagen {
     public static  void dibujar(String direccionDot, String direccionPng) {
         try {
             ProcessBuilder pbuilder;
-            pbuilder = new ProcessBuilder("dot", "-Tpng", "-o", direccionPng, direccionDot);
+            pbuilder = new ProcessBuilder("dot", "-Tjpg", "-o", direccionPng, direccionDot);
             pbuilder.redirectErrorStream(true);
             //Ejecuta el proceso
             pbuilder.start();

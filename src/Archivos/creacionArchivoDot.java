@@ -49,44 +49,47 @@ public class creacionArchivoDot {
                         double desgasteF = grafoCompleto.getNodes().get(i).getAristas().getValor(j).getDesgasteFisico();
                         switch (opcion) {
                             case 1:
-                                bw.write("\n"+ciudadOrigen + "->" + ciudadDestino + "[label=\"  "+combustible  +" \"];");
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label=\"C  " + combustible + " \"];");
                                 break;
                             case 2:
-                                bw.write("\n"+ciudadOrigen + "->" + ciudadDestino + "[label=\"  "+tiempoV  +" \"];");
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label=\"TV  " + tiempoV + " \"];");
                                 break;
                             case 3:
-                                bw.write("\n"+ciudadOrigen + "->" + ciudadDestino + "[label=\"  "+tiempoP  +" \"];");
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label=\"TP  " + tiempoP + " \"];");
                                 break;
                             case 4:
-                                bw.write("\n"+ciudadOrigen + "->" + ciudadDestino + "[label=\"  "+desgasteF  +" \"];");
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label=\"DF  " + desgasteF + " \"];");
                                 break;
                             case 5:
-                                bw.write("\n"+ciudadOrigen + "->" + ciudadDestino + "[label= \"C  "+combustible 
-                                        +" TV "+distancia+" \"];");
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label= \"C  " + combustible
+                                        + " D " + distancia + " \"];");
                                 break;
                             case 6:
-                                bw.write("\n"+ciudadOrigen + "->" + ciudadDestino + "[label= \"DF  "+desgasteF 
-                                        +" TV "+distancia+" \"];");
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label= \"DF  " + desgasteF
+                                        + " D " + distancia + " \"];");
                                 break;
                             case 7:
-                                bw.write("\n"+ciudadOrigen + "->" + ciudadDestino + "[label=\"  "+combustible  +" \"];");
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label=\"C  " + combustible + " \"];");
                                 break;
                             case 8:
-                                bw.write("\n"+ciudadOrigen + "->" + ciudadDestino + "[label=\"  "+tiempoV  +" \"];");
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label=\"TV  " + tiempoV + " \"];");
                                 break;
                             case 9:
-                                bw.write("\n"+ciudadOrigen + "->" + ciudadDestino + "[label=\"  "+tiempoP  +" \"];");
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label=\"TP  " + tiempoP + " \"];");
                                 break;
                             case 10:
-                                bw.write("\n"+ciudadOrigen + "->" + ciudadDestino + "[label=\"  "+desgasteF  +" \"];");
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label=\"DF  " + desgasteF + " \"];");
                                 break;
                             case 11:
-                                bw.write("\n"+ciudadOrigen + "->" + ciudadDestino + "[label= \"C  "+combustible 
-                                        +" TV "+distancia+" \"];");
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label= \"C  " + combustible
+                                        + " D " + distancia + " \"];");
                                 break;
                             case 12:
-                                bw.write("\n"+ciudadOrigen + "->" + ciudadDestino + "[label= \"DF  "+desgasteF 
-                                        +" TV "+distancia+" \"];");
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label= \"DF  " + desgasteF
+                                        + " D " + distancia + " \"];");
+                                break;
+                            case 13:
+                                bw.write("\n" + ciudadOrigen + "->" + ciudadDestino + "[label= \"D" + distancia + " \"];");
                                 break;
                         }
                     }
