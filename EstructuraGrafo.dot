@@ -1,0 +1,19 @@
+digraph G 
+{
+ node [shape=circle];
+ node [style=filled];
+ node [fillcolor="#EEEEEE"];
+ node [color="#EEEEEE"];
+ edge [color="#31CEF0"];
+XELA->XELA[label= "C  30.0 TV 300.0 "];
+XELA->GUATE[label= "C  30.0 TV 100.0 "];
+XELA->SAN MARCOS[label= "C  30.0 TV 200.0 "];
+XELA->PETEN[label= "C  30.0 TV 300.0 "];
+GUATE->JALAPA[label= "C  30.0 TV 400.0 "];
+GUATE->PETEN[label= "C  30.0 TV 500.0 "];
+GUATE->XELA[label= "C  30.0 TV 500.0 "];
+PETEN->SOLOLA[label= "C  30.0 TV 600.0 "];
+PETEN->TOTONICAPAN[label= "C  30.0 TV 700.0 "];
+ rankdir=LR;
+
+}
