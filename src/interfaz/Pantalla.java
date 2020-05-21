@@ -431,27 +431,30 @@ public class Pantalla extends javax.swing.JFrame {
                             if (ciudad.equals(origen1)) {
                                 boolean encontrado = false;
                                 //verificamos si es adyacente la ciudad 
-                                for (int j = 0; j < grafoCompleto.getNodes().get(i).getAristas().getTamanio(); j++) {
-                                    String arista = grafoCompleto.getNodes().get(i).getAristas().getValor(j).getDestino().getCiudad();
-                                    /*     for (int k = 0; k < arista.getAristas().getTamanio(); k++) {
+                                if (grafoCompleto.getNodes().get(i).getAristas()==null) {
+                                } else {
+                                    for (int j = 0; j < grafoCompleto.getNodes().get(i).getAristas().getTamanio(); j++) {
+                                        String arista = grafoCompleto.getNodes().get(i).getAristas().getValor(j).getDestino().getCiudad();
+                                        /*     for (int k = 0; k < arista.getAristas().getTamanio(); k++) {
                                     String aristaD= arista.getAristas().getValor(k).getDestino().getCiudad();
                                 }
-                                     */ System.out.println("arista " + arista);
-                                    if (arista.equals(destino1)) {
-                                        encontrado = true;
-                                        break;
-                                    } else {
+                                         */ System.out.println("arista " + arista);
+                                        if (arista.equals(destino1)) {
+                                            encontrado = true;
+                                            break;
+                                        } else {
+                                        }
                                     }
+                                    if (encontrado == true) {
+                                        recorridoGrafo(destino1, ciudadDestino);
+                                        ciudadINicio = destino1;
+                                        origenLabel.setText(destino1);
+                                        destinoLabel.setText(ciudadDestino);
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, "La ciudad " + destino1 + " no es adyacente de " + origen1);
+                                    }
+                                    break;
                                 }
-                                if (encontrado == true) {
-                                    recorridoGrafo(destino1, ciudadDestino);
-                                    ciudadINicio = destino1;
-                                    origenLabel.setText(destino1);
-                                    destinoLabel.setText(ciudadDestino);
-                                } else {
-                                    JOptionPane.showMessageDialog(null, "La ciudad " + destino1 + " no es adyacente de " + origen1);
-                                }
-                                break;
                             } else {
                             }
                         }

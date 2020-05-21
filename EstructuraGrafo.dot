@@ -1,0 +1,17 @@
+digraph G 
+{
+ node [shape=circle];
+ node [style=filled];
+ node [fillcolor="#EEEEEE"];
+ node [color="#EEEEEE"];
+ edge [color="#31CEF0"];
+XELA->XELA[label= "D10.0 "];
+XELA->GUATE[label= "D60.0 "];
+XELA->PETEN[label= "D300.0 "];
+GUATE->JALAPA[label= "D400.0 "];
+GUATE->SOLOLA[label= "D400.0 "];
+PETEN->SOLOLA[label= "D600.0 "];
+PETEN->JALAPA[label= "D600.0 "];
+ rankdir=LR;
+
+}

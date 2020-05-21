@@ -1,0 +1,12 @@
+
+ digraph grafica{
+ node [shape=rectangle];
+ node [style=filled];
+ node [fillcolor="#EEEEEE"];
+ node [color="#EEEEEE"];
+ edge [color="#31CEF0"];
+ SanMarcos__Quetzaltengo__Retalhuleu__Suchitepequez__Guatemala__634
+ SanMarcos__Quetzaltengo__Solola__Chimaltenago__Guatemala__512->
+ SanMarcos__Quetzaltengo__Retalhuleu__Suchitepequez__Guatemala__634
+rankdir=LR;
+}

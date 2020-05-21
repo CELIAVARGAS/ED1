@@ -57,7 +57,7 @@ public class recorrido {
         System.out.println(" ciudad " + ciudad.getCiudad());
         System.out.println(pilaNodosRecorridos.toString());
         if (lista1 == null) {//si no hay aristas quitamos de la pila
-            System.out.println(" No hay aristas ");
+    //        System.out.println(" No hay aristas ");
             pilaNodosRecorridos.pop();
             System.out.println(pilaNodosRecorridos.toString());
         } else {//Hay aristas
@@ -163,7 +163,7 @@ public class recorrido {
             String ciudadO = grafoCompleto.getNodes().get(i).getCiudad();
             if (ciudadO.equals(ciudad1)) {
                 if (grafoCompleto.getNodes().get(i).getAristas() == null) {
-                    System.out.println("No hay aristas");
+            //        System.out.println("No hay aristas");
                 } else {
                     for (int j = 0; j < grafoCompleto.getNodes().get(i).getAristas().getTamanio(); j++) {
                         nodoG ciudadD = grafoCompleto.getNodes().get(i).getAristas().getValor(j).getDestino();

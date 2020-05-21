@@ -45,6 +45,7 @@ public class lectura_Archivo {
     public static grafo grafoCompleto;
 
     public static void abrirArchivo() throws FileNotFoundException, Exception {
+        areaErroresPantalla.setText("");
         String linea = " ";
         Scanner entrada = null;
         JFileChooser fileChooser = new JFileChooser(".");
@@ -92,7 +93,7 @@ public class lectura_Archivo {
             }
              */
         } else {
-           areaErroresPantalla.append("\nNo se ha seleccionado ningún fichero");
+            areaErroresPantalla.append("\nNo se ha seleccionado ningún fichero");
             System.out.println("No se ha seleccionado ningún fichero");
         }
         /*        opcion = 5;
@@ -142,7 +143,7 @@ public class lectura_Archivo {
         if (arregloLinea.length == 7) {
             //verificamos cada ciudad tanto destino como origen
             for (int j = 0; j < 2; j++) {
-                String ciudadLeida = obtenerNombreCiudad(arregloLinea[j]);
+                String ciudadLeida = arregloLinea[j];
                 if (listaCiudades.esVacia()) {
                     //llenamos en caso este vacia la lista
                     ciudad = new nodoG(ciudadLeida);
@@ -182,8 +183,8 @@ public class lectura_Archivo {
             String linea = listaLineas.get(i);
             String[] arregloLinea = linea.split("\\|");
 
-            String ciudadOrigen = obtenerNombreCiudad(arregloLinea[0]);
-            String ciudadDestino = obtenerNombreCiudad(arregloLinea[1]);
+            String ciudadOrigen = arregloLinea[0];
+            String ciudadDestino = arregloLinea[1];
             double distanciaArista = conversionDouble(arregloLinea[2]);
             double tiempoVehiculoArista = conversionDouble(arregloLinea[3]);
             double tiempoPersonaArista = conversionDouble(arregloLinea[4]);
@@ -211,12 +212,16 @@ public class lectura_Archivo {
                 //enviamos datos para llenar el archiv;o grafo para la imagen
                 //              listaCiudadesGrafica.add(ciudadOrigen+","+ciudadDestino);
             }
-        }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           }
     }
 
     public static double conversionDouble(String dato) {
         double cantidad = 0;
-        String[] arregloLinea = dato.split("<");
+        try {
+            cantidad = Double.parseDouble(dato);
+        } catch (Exception e) {
+        areaErroresPantalla.append("\n Error en  conversion de dato " + dato);
+        }/*        String[] arregloLinea = dato.split("<");
 //        System.out.println(Arrays.toString(arregloLinea));
         if (arregloLinea == null) {
         } else {
@@ -231,7 +236,7 @@ public class lectura_Archivo {
 //                System.out.println(Arrays.toString(arregloLinea2));
             } else {
             }
-        }
+        }*/
         return cantidad;
     }
 
@@ -246,7 +251,7 @@ public class lectura_Archivo {
         for (int i = 0; i < grafoCompleto.getNodes().size(); i++) {
             System.out.println(grafoCompleto.getNodes().get(i).getCiudad());
             if (grafoCompleto.getNodes().get(i).getAristas() == null) {
-                System.out.println("No hay aristas");
+          //      System.out.println("No hay aristas");
             } else {
                 grafoCompleto.getNodes().get(i).getAristas().listar();
 //            System.out.println(grafoCompleto.getNodes().get(i).getAristas().);

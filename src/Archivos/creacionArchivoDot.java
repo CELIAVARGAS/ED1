@@ -38,7 +38,7 @@ public class creacionArchivoDot {
             for (int i = 0; i < grafoCompleto.getNodes().size(); i++) {
                 String ciudadOrigen = grafoCompleto.getNodes().get(i).getCiudad();
                 if (grafoCompleto.getNodes().get(i).getAristas() == null) {
-                    System.out.println("No hay aristas");
+              //      System.out.println("No hay aristas");
                 } else {
                     for (int j = 0; j < grafoCompleto.getNodes().get(i).getAristas().getTamanio(); j++) {
                         String ciudadDestino = grafoCompleto.getNodes().get(i).getAristas().getValor(j).getDestino().getCiudad();
