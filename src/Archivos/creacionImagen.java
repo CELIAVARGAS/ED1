@@ -5,15 +5,20 @@
  */
 package Archivos;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 /**
  *
  * @author esmeralda
  */
 public class creacionImagen {
 
-    public static  void dibujar(String direccionDot, String direccionPng) {
+    public static void dibujar(String direccionDot, String direccionPng) {
+        ProcessBuilder pbuilder = null;
         try {
-            ProcessBuilder pbuilder;
             pbuilder = new ProcessBuilder("dot", "-Tjpg", "-o", direccionPng, direccionDot);
             pbuilder.redirectErrorStream(true);
             //Ejecuta el proceso
@@ -21,5 +26,10 @@ public class creacionImagen {
         } catch (Exception e) {
             e.printStackTrace();
         }
+/*        if (pbuilder.redirectErrorStream() == true) {
+
+        } else {
+
+        }*/
     }
 }

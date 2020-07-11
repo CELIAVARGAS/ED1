@@ -5,8 +5,9 @@
  node [fillcolor="#EEEEEE"];
  node [color="#EEEEEE"];
  edge [color="#31CEF0"];
- SanMarcos__Quetzaltengo__Retalhuleu__Suchitepequez__Guatemala__634
- SanMarcos__Quetzaltengo__Solola__Chimaltenago__Guatemala__512->
- SanMarcos__Quetzaltengo__Retalhuleu__Suchitepequez__Guatemala__634
+ Quetzaltenango__Solola__50->
+ Quetzaltenango__Huehuetenango__Quiche__Solola__162->
+ Quetzaltenango__Totonicapan__Huehuetenango__Quiche__Solola__200->
+ Quetzaltenango__SanMarcos__Retalhuleu__Suchitepequez__Solola__235
 rankdir=LR;
 }

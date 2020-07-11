@@ -16,8 +16,6 @@ import Grafo.arista;
 import Grafo.grafo;
 import Grafo.listaCiudad;
 import Grafo.nodoG;
-import interfaz.Pantalla;
-import static interfaz.Pantalla.opcion;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
@@ -25,11 +23,26 @@ import java.util.Scanner;
 import javax.swing.JFileChooser;
 import arbol.arbolB;
 import static arbol.arbolB.imprimir;
-import static interfaz.Pantalla.areaErroresPantalla;
-import static interfaz.Pantalla.botonI;
+import interfaz.PantallaG;
+import static interfaz.PantallaG.areaErroresPantalla;
+import static interfaz.PantallaG.botonG;
+import static interfaz.PantallaG.destino;
+import static interfaz.PantallaG.origen;
+import java.awt.BorderLayout;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -45,7 +58,7 @@ public class lectura_Archivo {
     public static grafo grafoCompleto;
 
     public static void abrirArchivo() throws FileNotFoundException, Exception {
-        areaErroresPantalla.setText("");
+        PantallaG.areaErroresPantalla.setText("");
         String linea = " ";
         Scanner entrada = null;
         JFileChooser fileChooser = new JFileChooser(".");
@@ -65,9 +78,7 @@ public class lectura_Archivo {
                     //analisamos cada linea y creamos los nodos ciudades
                     analisisEntrada(linea, numeroLinea);
                     numeroLinea++;
-                    /*                System.out.println(listaCiudades.size());
-                    System.out.println(listaCiudades.toString());
-                     */                }
+                }
             } catch (FileNotFoundException e) {
                 System.out.println(e.getMessage());
             } finally {
@@ -75,47 +86,32 @@ public class lectura_Archivo {
                     entrada.close();
                 }
             }
+            File imagen = new File("imagen.jpg");
+//            FileInputStream readImage = new FileInputStream(imagen);
+//            readImage.close();
+            imagen.delete();
+
             //despues de analizar cada linea agregamos las aristas a los nodos
-            agregacionAristasANodos();
+            agregarAristasANodos1();
             creacionGrafo();
             crearArchivoDotIMagen(13);
             dibujar("EstructuraGrafo.dot", "imagen.jpg");
-            ImageIcon iconoOriginal = new ImageIcon("imagen.jpg");
-            int ancho = botonI.getWidth();
-            int alto = botonI.getHeight();
-            ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(ancho, alto, java.awt.Image.SCALE_DEFAULT));
-            botonI.setIcon(iconoEscala);
+            JOptionPane.showMessageDialog(null, "ARCHIVO CARGADO");
 
-            /*        recorridoGrafo("XELA", "PETEN");
-            System.out.println("Lista de rutas");
-            for (int i = 0; i < listaRecorridos.size(); i++) {
-                System.out.println(listaRecorridos.get(i).toString());
-            }
-             */
         } else {
             areaErroresPantalla.append("\nNo se ha seleccionado ningún fichero");
             System.out.println("No se ha seleccionado ningún fichero");
         }
-        /*        opcion = 5;
-        creacionArbol(1);
-        crearArchivoDotIMagen(5);
-        crearArchivoDotArbol();
-        //    imprimir(arbolB.raizArbol);    
-/*
-        String ruta = "EstructuraArbol.dot";
-        File file = new File(ruta);
-        // Si el archivo no existe es creado
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        FileWriter fw = new FileWriter(file, true);
-        BufferedWriter bw = new BufferedWriter(fw);
-        bw.write("}");
-        bw.close();
-         
-        dibujar("EstructuraGrafo.dot", "imagen.png");
-        dibujar("EstructuraArbol.dot", "imagen2.png");
-         */
+    }
+
+    public static void ilustrarGrafo() {
+        ImageIcon iconoOriginal = new ImageIcon("imagen.jpg");
+        int ancho = botonG.getWidth();
+        int alto = botonG.getHeight();
+        ImageIcon iconoEscala = new ImageIcon(iconoOriginal.getImage().getScaledInstance(ancho, alto, java.awt.Image.SCALE_DEFAULT));
+        botonG.setIcon(iconoEscala);
+        botonG.repaint();
+
     }
 
     public static String obtenerNombreCiudad(String ciudad) {
@@ -166,17 +162,19 @@ public class lectura_Archivo {
                     } else {
                     }
                 }
+
             }
             //agregamos linea correcta  a lista de lineas para despues agregar aristas 
             listaLineas.add(linea);
         } else if (linea.isEmpty()) {//Linea vacia
         } else {//Linea con parametros extras o menores
-            Pantalla.areaErroresPantalla.append("\n Error en  linea " + numeroLinea + " cantidad de parametros erroneos");
+            areaErroresPantalla.append("\n Error en  linea " + numeroLinea + " cantidad de parametros erroneos");
         }
 
     }
 
-    public static void agregacionAristasANodos() throws Exception {
+    public static void agregarAristasANodos1() throws Exception {
+
         //leemos cada linea obtenemos nodos
         for (int i = 0; i < listaLineas.size(); i++) {
             //separamos cada dato de lineas y lo buscamos en la lista nodos , despues de encontrar creamos los aristas
@@ -212,7 +210,7 @@ public class lectura_Archivo {
                 //enviamos datos para llenar el archiv;o grafo para la imagen
                 //              listaCiudadesGrafica.add(ciudadOrigen+","+ciudadDestino);
             }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           }
+        }
     }
 
     public static double conversionDouble(String dato) {
@@ -220,7 +218,7 @@ public class lectura_Archivo {
         try {
             cantidad = Double.parseDouble(dato);
         } catch (Exception e) {
-        areaErroresPantalla.append("\n Error en  conversion de dato " + dato);
+            areaErroresPantalla.append("\n Error en  conversion de dato " + dato);
         }/*        String[] arregloLinea = dato.split("<");
 //        System.out.println(Arrays.toString(arregloLinea));
         if (arregloLinea == null) {
@@ -243,15 +241,21 @@ public class lectura_Archivo {
     public static void creacionGrafo() throws Exception {
         grafoCompleto = new grafo();
 
+        origen.removeAllItems();
+        destino.removeAllItems();
         for (int i = 0; i < listaCiudades.getTamanio(); i++) {
             nodoG nodoLista = listaCiudades.getValor(i);
             grafoCompleto.agregarNodo(nodoLista);
         }
-//grafoCompleto.listar();
         for (int i = 0; i < grafoCompleto.getNodes().size(); i++) {
             System.out.println(grafoCompleto.getNodes().get(i).getCiudad());
+            String ciudadE=grafoCompleto.getNodes().get(i).getCiudad(); 
+            //agregamos a combox de ciudades esta lista
+            origen.addItem(ciudadE);
+            destino.addItem(ciudadE);
+
             if (grafoCompleto.getNodes().get(i).getAristas() == null) {
-          //      System.out.println("No hay aristas");
+                //      System.out.println("No hay aristas");
             } else {
                 grafoCompleto.getNodes().get(i).getAristas().listar();
 //            System.out.println(grafoCompleto.getNodes().get(i).getAristas().);

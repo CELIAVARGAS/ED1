@@ -10,7 +10,7 @@ import Grafo.listaAristas;
 import Grafo.nodoG;
 import arbol.arbolB;
 import static arbol.arbolB.listaArbol;
-import static interfaz.Pantalla.areaListas;
+import interfaz.PantallaG;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -57,7 +57,7 @@ public class recorrido {
         System.out.println(" ciudad " + ciudad.getCiudad());
         System.out.println(pilaNodosRecorridos.toString());
         if (lista1 == null) {//si no hay aristas quitamos de la pila
-    //        System.out.println(" No hay aristas ");
+            //        System.out.println(" No hay aristas ");
             pilaNodosRecorridos.pop();
             System.out.println(pilaNodosRecorridos.toString());
         } else {//Hay aristas
@@ -163,7 +163,7 @@ public class recorrido {
             String ciudadO = grafoCompleto.getNodes().get(i).getCiudad();
             if (ciudadO.equals(ciudad1)) {
                 if (grafoCompleto.getNodes().get(i).getAristas() == null) {
-            //        System.out.println("No hay aristas");
+                    //        System.out.println("No hay aristas");
                 } else {
                     for (int j = 0; j < grafoCompleto.getNodes().get(i).getAristas().getTamanio(); j++) {
                         nodoG ciudadD = grafoCompleto.getNodes().get(i).getAristas().getValor(j).getDestino();
@@ -254,6 +254,28 @@ public class recorrido {
                     }
                 }
             }
+
+            System.out.println(Arrays.toString(datos));
+            for (int j = 0; j < datos.length; j++) {
+                double numeroOrden = datos[j];
+                for (int i = 0; i < listaRecorridos.size(); i++) {
+                    double numero = (double) listaRecorridos.get(i).getLast();
+                    if (numero == numeroOrden) {
+                        listaRO.add(listaRecorridos.get(i));
+                    } else {
+                    }
+                }
+            }
+            PantallaG.comboBoxMejoresRutas.removeAllItems();
+            System.out.println("Lista RO");
+            for (int i = 0; i < listaRO.size(); i++) {
+//                areaListas.append("\n" + listaRO.get(i));
+                LinkedList<String> lista = listaRO.get(i);
+                PantallaG.comboBoxMejoresRutas.addItem(lista);
+            }
+            System.out.println(listaRO.toString());
+            llenarArbol();
+
         } else {
             for (int x = 0; x < datos.length; x++) {
                 for (int i = 0; i < datos.length - x - 1; i++) {
@@ -264,30 +286,34 @@ public class recorrido {
                     }
                 }
             }
-        }
-        System.out.println(Arrays.toString(datos));
 
-        for (int j = 0; j < datos.length; j++) {
-            double numeroOrden = datos[j];
-            for (int i = 0; i < listaRecorridos.size(); i++) {
-                double numero = (double) listaRecorridos.get(i).getLast();
-                if (numero == numeroOrden) {
-                    listaRO.add(listaRecorridos.get(i));
-                } else {
+            System.out.println(Arrays.toString(datos));
+            for (int j = 0; j < datos.length; j++) {
+                double numeroOrden = datos[j];
+                for (int i = 0; i < listaRecorridos.size(); i++) {
+                    double numero = (double) listaRecorridos.get(i).getLast();
+                    if (numero == numeroOrden) {
+                        listaRO.add(listaRecorridos.get(i));
+                    } else {
+                    }
                 }
             }
+            PantallaG.comboBoxPeoresRUtas.removeAllItems();
+            System.out.println("Lista RO");
+            for (int i = 0; i < listaRO.size(); i++) {
+//                areaListas.append("\n" + listaRO.get(i));
+                LinkedList<String> lista = listaRO.get(i);
+                PantallaG.comboBoxPeoresRUtas.addItem(lista);
+            }
+            System.out.println(listaRO.toString());
+            llenarArbol();
+
         }
-        areaListas.setText("");
-        System.out.println("Lista RO");
-        for (int i = 0; i < listaRO.size(); i++) {
-            areaListas.append("\n"+listaRO.get(i));
-        }
-        System.out.println(listaRO.toString());
-        llenarArbol();
+
     }
 
     public static void llenarArbol() throws IOException {
-        arbolB arbol = new arbolB(5);//  B-Tree Tree with order  N is created.
+        arbolB arbol = new arbolB(5);
         for (int i = 0; i < listaRO.size(); i++) {
             double numero = (double) listaRO.get(i).getLast();
             arbol.insertar(arbol, numero);

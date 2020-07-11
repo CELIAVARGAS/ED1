@@ -5,13 +5,27 @@ digraph G
  node [fillcolor="#EEEEEE"];
  node [color="#EEEEEE"];
  edge [color="#31CEF0"];
-XELA->XELA[label= "D10.0 "];
-XELA->GUATE[label= "D60.0 "];
-XELA->PETEN[label= "D300.0 "];
-GUATE->JALAPA[label= "D400.0 "];
-GUATE->SOLOLA[label= "D400.0 "];
-PETEN->SOLOLA[label= "D600.0 "];
-PETEN->JALAPA[label= "D600.0 "];
+SanMarcos->Quetzaltenango[label="TP  128.0 "];
+SanMarcos->Retalhuleu[label="TP  63.0 "];
+Quetzaltenango->SanMarcos[label="TP  128.0 "];
+Quetzaltenango->Solola[label="TP  128.0 "];
+Quetzaltenango->Totonicapan[label="TP  128.0 "];
+Quetzaltenango->Huehuetenango[label="TP  50.0 "];
+Retalhuleu->SanMarcos[label="TP  128.0 "];
+Retalhuleu->Suchitepequez[label="TP  128.0 "];
+Retalhuleu->Quetzaltenango[label="TP  128.0 "];
+Solola->Huehuetenango[label="TP  50.0 "];
+Solola->Quiche[label="TP  50.0 "];
+Solola->Quetzaltenango[label="TP  50.0 "];
+Solola->Suchitepequez[label="TP  50.0 "];
+Totonicapan->Huehuetenango[label="TP  128.0 "];
+Totonicapan->Guatemala[label="TP  128.0 "];
+Huehuetenango->Quiche[label="TP  128.0 "];
+Huehuetenango->Quetzaltenango[label="TP  128.0 "];
+Quiche->Chimaltenango[label="TP  128.0 "];
+Quiche->Solola[label="TP  128.0 "];
+Suchitepequez->Solola[label="TP  128.0 "];
+Suchitepequez->Chimaltenango[label="TP  128.0 "];
  rankdir=LR;
 
 }

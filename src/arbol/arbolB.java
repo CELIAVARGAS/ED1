@@ -1,6 +1,5 @@
 package arbol;
 
-import static interfaz.Pantalla.opcion;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -129,7 +128,6 @@ public class arbolB {
                     j++;
                 }
             }
-
             insercionNodoLleno(nodo.hijos[j], clave);//recurse
         }
     }
@@ -140,24 +138,22 @@ public class arbolB {
 // ------------------------------------------------ --------------
     public void insertar(arbolB arbol, double clave) {
         nodoArbol nodoAux = arbol.raizArbol;//this method finds the node to be inserted as 
-        //it goes through this starting at root node.
-        if (nodoAux.cantidadCLave == 2 * gradoArbol - 1)//if is full
+        if (nodoAux.cantidadCLave == 2 * gradoArbol - 1)
         {
             nodoArbol nodoNUevo = new nodoArbol(gradoArbol, null);//new node
 
             arbol.raizArbol = nodoNUevo;    //\
             // \	
             nodoNUevo.hoja = false;//  \
-            //   > this is to initialize node.
             nodoNUevo.cantidadCLave = 0;   //  /
             // /	
             nodoNUevo.hijos[0] = nodoAux;///
 
             division(nodoNUevo, 0, nodoAux);//division de taiz
 
-            insercionNodoLleno(nodoNUevo, clave); //call insert method
+            insercionNodoLleno(nodoNUevo, clave); 
         } else {
-            insercionNodoLleno(nodoAux, clave);//if its not full just insert it
+            insercionNodoLleno(nodoAux, clave);
         }
     }
 

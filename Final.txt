@@ -1,7 +1,7 @@
 SanMarcos|Quetzaltengo|60|128|50|250|44
 Quetzaltengo|SanMarcos|60|128|50|250|44
-Quetzaltengo|Salola|60|128|50|250|44
-Solola|Chimaltenago|60|128|50|250|44
+Quetzaltengo|Sololá|60|128|50|250|44
+Sololá|Chimaltenago|60|128|50|250|44
 Chimaltenago|Guatemala|60|128|50|250|44
 Quetzaltengo|Retalhuleu|60|128|50|250|44
 Retalhuleu|Suchitepequez|60|128|50|250|44
